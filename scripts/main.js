@@ -3,18 +3,22 @@ document.addEventListener('DOMContentLoaded', function () {
     hero.start();
 
 
-const cb = function (el, isIntersecting) {
+const cb = function (el, inview) {
     if(isIntersecting) {
         const ta = new TextAnimation(el);
         ta.animate();
     }
 }
 
-const so = new ScrollObserver('.animate-title', cb);
+const so = new ScrollObserver('.tween-animate-title', cb);
 
-const _inviewAnimation = function(el, ){
-
+const _inviewAnimation = function(el, inview){
+    if(inview){
+        el.classList.add('inview');
+    }else{
+        el.classList.remove('inview');
+    }
 }
 
-const so = new ScrollObserver('.tween-animate-title', _inviewAnimation);
+const so2 = new ScrollObserver('.cover-slide', _inviewAnimation);
 });
